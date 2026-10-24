@@ -1,92 +1,69 @@
-# Grocery recommendations: Buy it again and You might also like, from public Instacart orders
+# Grocery recommendations from public Instacart orders
 
-An independent learning project by Justin Dao. It is not commissioned by, affiliated with or endorsed by Instacart.
+An independent learning project by Justin Dao. Not commissioned by, affiliated with or endorsed by Instacart.
 
-**Question:** can a short list of familiar products help returning grocery shoppers find what they buy again, with less searching? And later: can past purchases suggest unfamiliar products better than a list of popular ones?
+![Prototype with a Buy it again row and a You might also like row](docs/images/prototype.jpg)
 
-**Case study:** see the Grocery recommendations project on my portfolio (link to be added once the portfolio is public).
+**Question:** can a shopper's past orders help them find what they buy again, and suggest something new, better than a list of popular products?
 
-## What is in this repository
+## Results at a glance
 
 | Version | What I tried | Result | Decision |
 |---|---|---|---|
-| V1 Buy it again | Compared 5 ways to rank familiar products on the same 131,209 shoppers | Weighted recency: 24.28% Recall@5 vs 23.12% personal frequency and 24.45% boosted trees | Kept weighted recency, a simple rule I can trace, and accepted the small accuracy gap to trees |
-| V2 Purchase timing | Added one fixed timing bonus to weighted recency (60,000 development shoppers) | +0.025 points of recall, below the +0.25 bar set beforehand; interval included zero | Stopped. Kept the simpler rule |
-| V3 Discovery | Ranked unfamiliar products using shared buyers, against unfamiliar popularity | Reserved check (15,000 shoppers): Hit Rate@3 7.727% vs 6.627%, +1.100 points (approx. 95% interval +0.693 to +1.507) | Added a "You might also like" section to the prototype |
+| 1. Buy it again | Compared 5 ways to rank familiar products on the same 131,209 shoppers | Weighted recency: 24.28% Recall@5, vs 23.12% personal frequency and 24.45% boosted trees | Kept weighted recency: a rule I can explain, at a small accuracy cost |
+| 2. Purchase timing | Added a bonus when a product looked "due" | +0.025 points of recall, below the +0.25 bar set beforehand | Stopped and kept Version 1 |
+| 3. You might also like | Ranked never-bought products using shared buyers, against popular products | Held-back check (15,000 shoppers): Hit Rate@3 7.73% vs 6.63%, +1.10 points (95% range +0.69 to +1.51) | Added to the prototype |
 
-All scores are offline checks against historical baskets. They are not evidence of time saved, sales or retention.
+The pass or fail check for Version 3 used three suggestions. The prototype shows five, which were measured afterwards on the same, already-seen shoppers (Hit Rate@5 10.77% vs 9.31%). Those five-item numbers describe the result; they are not a fresh test.
 
-**Three first, then five.** The pass or fail check above used the top **three** suggestions. The prototype later moved to **five** cards from the same ranking. Five suggestions were then measured on the same shoppers with no tuning: on the 15,000 reserved shoppers, Hit Rate@5 was 10.773% vs 9.313% (+1.46 points, approx. 95% interval +1.02 to +1.90). Those answers had already been seen, so the five-item numbers are descriptive, not a fresh test (`05_Results/03_Checks/discovery_top_five.json`).
+All scores are offline checks on past baskets. They do not show time saved, sales or retention.
 
-## What runs from this repository alone
+## Repository layout
 
-| Item | Runs without the dataset? |
+| Folder | What is inside |
 |---|---|
-| `03_Code/05_Prototype/buy_again_prototype.html` | **Yes.** Open it in a browser. It is self-contained, with saved example lists and embedded photos. It does not run Python or retrain anything. |
-| `05_Results/03_Checks/*.json` | **Yes.** Aggregate evidence reports for every check and result. |
-| Project documents (`01_Project/`, `04_Learning/`, `05_Results/`) and `00_START_HERE.html` | **Yes.** Read in any browser or Markdown viewer. |
-| SQL and Python in `03_Code/01` to `03_Code/04` | **No.** They need the Instacart CSVs (about 700 MB) and the prepared local databases, which are not included. |
-| Notebooks in `04_Learning/03_Notebooks/` | Partly. Some cells show saved aggregate results; most need the local data. |
-
-## Setup (to rerun the analysis)
-
-This was built and checked on one Windows machine with Python 3.13. A fresh install on another computer has **not** been tested end to end.
-
-1. Install Python 3.13.
-2. From the repository root, run `03_Code\00_Run\01_Setup_Python.bat`, or:
-   ```
-   py -3.13 -m venv .venv
-   .venv\Scripts\python.exe -m pip install -r 03_Code\00_Run\requirements-lock.txt
-   ```
-3. Get the data: `.venv\Scripts\python.exe 03_Code\01_Data_Preparation\download_data.py` downloads the six CSVs from the [Zenodo archive](https://zenodo.org/records/2654444) of the 2017 [Instacart release](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) into `02_Data/01_Original/` and checks their checksums. Check the dataset's terms before use.
-4. Follow `03_Code/README.md` for the stage-by-stage scripts.
-
-Notes:
-- Current feature work uses Python and SQLite. Some older scripts and notebook cells use DuckDB, which Windows Smart App Control blocked on my machine. Those older routes may fail.
-- Do not rerun the final evaluation or the discovery audit as if they were fresh tests. Their answers have already been opened. The discovery and timing scripts refuse to overwrite saved results for this reason.
+| `prototype/` | `buy_again_prototype.html`, the clickable shopping page. Open it in any browser. |
+| `src/data_preparation/` | Download the data, prepare it and check it |
+| `src/baselines/` | Popularity, personal frequency and weighted recency (Python + SQL) |
+| `src/model_comparison/` | Machine learning models, the Version 2 timing test and Version 3 discovery |
+| `src/final_evaluation/` | The one-time final check for Version 1 and the held-back check for Version 3 |
+| `src/prototype_export/` | Export saved example lists and photos into the prototype |
+| `results/` | Summary reports behind every number above |
+| `notebooks/` | Three walkthrough notebooks |
+| `docs/` | Case study, project brief, data and methods, research and testing, decision log |
 
 ## Key code
 
-| What | Where |
-|---|---|
-| Weighted recency ranking (recent purchases count more; weight halves every 5 orders) | `03_Code/02_Baselines/score_weighted_recency.py`, `03_Code/02_Baselines/weighted_recency.sql` |
-| Machine learning comparison (logistic regression, boosted trees) | `03_Code/03_Model_Comparison/train_logistic_validation.py`, `build_ml_features.py` |
-| V2 timing experiment | `03_Code/03_Model_Comparison/evaluate_purchase_timing.py` |
-| V3 discovery, development comparison | `03_Code/03_Model_Comparison/evaluate_discovery.py` |
-| V3 discovery, reserved check | `03_Code/04_Final_Evaluation/evaluate_discovery_audit.py` |
-| Final V1 evaluation | `03_Code/04_Final_Evaluation/prepare_final_predictions.py`, `score_final_predictions.py` |
-| Prototype | `03_Code/05_Prototype/buy_again_prototype.html` |
+- Weighted recency (recent purchases count more; the weight halves every five orders): [`src/baselines/score_weighted_recency.py`](src/baselines/score_weighted_recency.py), [`weighted_recency.sql`](src/baselines/weighted_recency.sql)
+- Discovery with shared buyers: [`src/model_comparison/evaluate_discovery.py`](src/model_comparison/evaluate_discovery.py)
+- Held-back discovery check: [`src/final_evaluation/evaluate_discovery_audit.py`](src/final_evaluation/evaluate_discovery_audit.py)
 
-## Folder map
+## Running it
 
-| Folder | Contents |
-|---|---|
-| `00_START_HERE.html` | Project guide with the task board, learning path and readable findings. Task progress is saved in the browser, so a fresh copy shows the starting backlog, not my current progress. |
-| `01_Project/` | Brief, learning path, data and methods, research and testing record, case study, project checkpoint, prototype requirements, brand guide |
-| `02_Data/` | READMEs only. Raw data, prepared databases and model outputs are excluded. |
-| `03_Code/` | Numbered stages: data preparation, baselines, model comparison, final evaluation, prototype, guide |
-| `04_Learning/` | Learning notes, dated learning log and three grouped notebooks |
-| `05_Results/` | Findings, decision log and aggregate check reports |
+**Runs with no setup:** the prototype, the results files, the docs.
 
-## How I worked, and how AI helped
+**Needs the data:** the scripts and most notebook cells need the six Instacart CSVs (about 700 MB), which are not included. Get them from the [Zenodo archive](https://zenodo.org/records/2654444) of the 2017 [Instacart release](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) and check the dataset's terms before use.
 
-I chose the problem, the scope of each version and the product direction. I reviewed the methods and results, made the trade-offs (for example, weighted recency over boosted trees, and stopping V2), gave design feedback and ran two exploratory user sessions.
+```
+py -3.13 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
 
-AI tools did a large part of the implementation:
-- **Codex** helped write and check the SQL and Python, run the comparisons, explain concepts, and keep the documents and logs organised.
-- **Claude** helped design the HTML prototype and its brand guide, and build the portfolio case study.
+Notes:
+- The scripts are kept exactly as they were run, so file paths inside them follow the original project layout (`02_Data/` for data, `05_Results/03_Checks/` for reports, `03_Code/<stage>/` for code). Recreate those folders, or update the paths, before rerunning.
+- Built and checked on one Windows machine with Python 3.13. A fresh setup on another computer has not been tested.
+- The final checks have already been opened, so rerunning them is not a fresh test.
 
-I do not claim I wrote every component independently. `AGENTS.md` holds the working rules I gave the AI tools. It is an instruction file; it does not train a model. The learning log shows what I worked through and when.
+## How AI helped
+
+I chose the problem, the scope of each version and the product direction, reviewed the methods and results, made the trade-offs and ran two exploratory user sessions. Codex helped write and check the SQL and Python, run the comparisons and keep the records. Claude helped design the prototype and the portfolio case study.
 
 ## Limits
 
-- The two user sessions were exploratory. They do not prove the feature saves time. Discovery has not been tested with people.
-- "New" product means new to the shopper's recorded history, not a proven first-ever purchase.
-- The data has no prices, quantities, browsing or recommendation exposure, so no revenue or engagement impact is claimed.
-- The prototype has no real accounts, checkout, prices, stock or Instacart connection. Nothing is deployed.
+- Two exploratory user sessions; they do not prove time saved. You might also like has not been tested with people.
+- "New" means new to the shopper's recorded history.
+- The data has no prices, pack sizes, stock or click records. The prototype has no real accounts, checkout or Instacart connection.
 
 ## Credits
 
-- Data: Instacart's 2017 public "3 Million Instacart Orders" release, retrieved from a [Zenodo archive](https://zenodo.org/records/2654444).
-- Product photos in the prototype: [Unsplash](https://unsplash.com/license), illustrative of the product type, not the exact package. Sources and hashes: `01_Project/Assets/prototype_image_sources.json`.
-- The Instacart name, logo and colours are used only to frame this independent study and belong to Instacart.
+Data: Instacart's 2017 "3 Million Instacart Orders" release, via a Zenodo archive. Prototype photos: [Unsplash](https://unsplash.com/license), showing the type of product, not the exact package. The Instacart name and logo belong to Instacart.

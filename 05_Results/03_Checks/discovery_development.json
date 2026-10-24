@@ -1,0 +1,49 @@
+{
+  "status": "passed_technical_checks",
+  "customers": 60000,
+  "customers_with_novel_products": 49118,
+  "customers_without_novel_products": 10882,
+  "novel_target_product_lines": 259492,
+  "novel_target_lines_in_candidate_catalogue": 259071,
+  "overall": {
+    "unfamiliar_popularity": {
+      "hit_at_3": 0.06563333333333334,
+      "precision_at_3": 0.02296111111111111,
+      "recall_at_3_among_novel_baskets": 0.01815632652811496,
+      "distinct_suggested_products": 25,
+      "short_lists": 0
+    },
+    "related_products": {
+      "hit_at_3": 0.07776666666666666,
+      "precision_at_3": 0.02766111111111111,
+      "recall_at_3_among_novel_baskets": 0.02197270414589744,
+      "distinct_suggested_products": 2705,
+      "short_lists": 0
+    }
+  },
+  "related_minus_popularity_hit_pp": 1.2133333333333334,
+  "paired_approx_95pct_hit_interval_pp": [
+    1.0110311470422086,
+    1.415635519624458
+  ],
+  "precision_difference_pp": 0.4699999999999999,
+  "passes_exploratory_gate": true,
+  "gate": {
+    "hit_gain_pp_at_least": 0.5,
+    "paired_hit_lower_bound_above": 0,
+    "precision_gain_pp_at_least": 0,
+    "note": "Agent-selected exploratory project criterion, not a business standard. Passing only warrants review; no automatic audit or UI change."
+  },
+  "related_fallback_slots": 135,
+  "supported_similarity_products": 10365,
+  "independent_association_checks": 100,
+  "saved_list_overlap_checks_per_method": 100,
+  "predictions_sha256": "6f7a0c40283712c4c825182cd89d65a69319af257c751bfd67122869537d71dc",
+  "protocol_sha256": "e54fbcc560f5c8659c2a0ca1dec70c5a3d02d34870d0aa71ffc57b6721aa103d",
+  "code_sha256": "7ba6130d4df867fc207ba6c21a00757673dcac96cac2d7dde3d971de81a74415",
+  "audit_used": false,
+  "prototype_changed": false,
+  "interpretation": "Exploratory exposed-development comparison, not causal evidence or final audit. Paired interval assumes independent shoppers with shared fitted statistics treated as fixed.",
+  "elapsed_seconds_not_app_latency": 45.260866099997656,
+  "next_step": "Review development result together; no automatic audit scoring or UI change."
+}

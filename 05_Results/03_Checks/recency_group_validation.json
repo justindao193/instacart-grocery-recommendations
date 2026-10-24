@@ -1,0 +1,114 @@
+{
+  "stage": "validation subgroup comparison; final evaluation not run",
+  "customers": 131209,
+  "history_definition": "eligible past order count before validation",
+  "groups": [
+    {
+      "group": "Short: 1-5 orders",
+      "customers": 46929,
+      "mean_basket_products": 9.803255982441561,
+      "precision_at_5": {
+        "frequency": 0.312288776662618,
+        "recency": 0.31290673144537495,
+        "difference_pp": 0.061795478275693067,
+        "paired_approx_95pct_interval_pp": [
+          0.027247906121837338,
+          0.09634305042954878
+        ]
+      },
+      "recall_at_5": {
+        "frequency": 0.2299973761831318,
+        "recency": 0.23022617107879026,
+        "difference_pp": 0.02287948956584674,
+        "paired_approx_95pct_interval_pp": [
+          0.002202235238207121,
+          0.043556743893486356
+        ]
+      },
+      "hit_at_5": {
+        "frequency": 0.7358989111210552,
+        "recency": 0.7357923671929937,
+        "difference_pp": -0.010654392806153977,
+        "paired_approx_95pct_interval_pp": [
+          -0.06986736373059178,
+          0.04855857811828382
+        ]
+      },
+      "customers_with_more_matches": 830,
+      "customers_with_equal_matches": 45400,
+      "customers_with_fewer_matches": 699
+    },
+    {
+      "group": "Medium: 6-15 orders",
+      "customers": 45262,
+      "mean_basket_products": 10.371371128098625,
+      "precision_at_5": {
+        "frequency": 0.36493305642702484,
+        "recency": 0.3755644911846582,
+        "difference_pp": 1.0631434757633336,
+        "paired_approx_95pct_interval_pp": [
+          0.9779497945402215,
+          1.1483371569864456
+        ]
+      },
+      "recall_at_5": {
+        "frequency": 0.24387464485835714,
+        "recency": 0.2507605398440931,
+        "difference_pp": 0.6885894985735934,
+        "paired_approx_95pct_interval_pp": [
+          0.6209829070954579,
+          0.7561960900517288
+        ]
+      },
+      "hit_at_5": {
+        "frequency": 0.7995669656665636,
+        "recency": 0.8062834165525165,
+        "difference_pp": 0.6716450885952897,
+        "paired_approx_95pct_interval_pp": [
+          0.5068648448699414,
+          0.8364253323206379
+        ]
+      },
+      "customers_with_more_matches": 5167,
+      "customers_with_equal_matches": 37042,
+      "customers_with_fewer_matches": 3053
+    },
+    {
+      "group": "Long: 16+ orders",
+      "customers": 39018,
+      "mean_basket_products": 11.007791275821416,
+      "precision_at_5": {
+        "frequency": 0.38239274181147165,
+        "recency": 0.42907888666769184,
+        "difference_pp": 4.6686144856220215,
+        "paired_approx_95pct_interval_pp": [
+          4.508451411060524,
+          4.828777560183519
+        ]
+      },
+      "recall_at_5": {
+        "frequency": 0.22874066565019305,
+        "recency": 0.25753204144562314,
+        "difference_pp": 2.8791375795430105,
+        "paired_approx_95pct_interval_pp": [
+          2.752115077898099,
+          3.006160081187922
+        ]
+      },
+      "hit_at_5": {
+        "frequency": 0.8127530883182121,
+        "recency": 0.8417397098774925,
+        "difference_pp": 2.898662155928033,
+        "paired_approx_95pct_interval_pp": [
+          2.6205000187979,
+          3.176824293058166
+        ]
+      },
+      "customers_with_more_matches": 11719,
+      "customers_with_equal_matches": 22357,
+      "customers_with_fewer_matches": 4942
+    }
+  ],
+  "checks": "Same customers and baskets; all users assigned once; group averages reconcile.",
+  "limits": "Exploratory groups, not randomised effects of history length. Approximate intervals assume independent users. Higher group averages can coexist with individual losses; no causal shopping benefit established."
+}

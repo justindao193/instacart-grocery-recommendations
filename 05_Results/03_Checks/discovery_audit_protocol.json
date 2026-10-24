@@ -1,0 +1,33 @@
+{
+  "stage": "discovery_reserved_audit",
+  "authorisation": "Justin requested this final check after reviewing development results.",
+  "customers": 15000,
+  "target": "Last known prior basket for fixed audit customer IDs; official final test contents remain unknown.",
+  "methods": "Unchanged development-fitted neighbours and popularity; no refitting or audit contribution to shared statistics.",
+  "personal_inputs": "Earlier audit shopper history only, same fixed seed/score/filter/fallback/tie rules.",
+  "metrics": {
+    "primary": "Hit@3 averaged over ALL 15000 audit customers",
+    "precision": "Matches / 3 for every customer, including short lists",
+    "conditional_novel_recall": "Matches / novel target products, averaged only over customers with at least one novel target product; report denominator",
+    "novel": "Absent from complete recorded pre-target personal history"
+  },
+  "gate": {
+    "hit_gain_pp_at_least": 0.5,
+    "paired_hit_lower_bound_above": 0,
+    "precision_gain_pp_at_least": 0,
+    "note": "Agent-selected exploratory project criterion, not a business standard. Passing only warrants review; no automatic audit or UI change."
+  },
+  "gate_interpretation": "Same thresholds retained before audit scoring. Passing supports a prototype experiment, not proven customer benefit.",
+  "exposure": "Reserved from V2/V3 development scoring; source previously loaded and summarised. Not new data or guaranteed pristine original source.",
+  "limits": "Per-customer order cutoffs, no shared calendar. Shared histories have cross-customer timing ambiguity. Not causal discovery or satisfaction evidence.",
+  "after_scoring": "Audit becomes exposed. No tuning or repeat fresh-test claims. V2 timing remains stopped; this is a separate discovery audit.",
+  "hashes": {
+    "03_Code\\03_Model_Comparison\\evaluate_discovery.py": "7ba6130d4df867fc207ba6c21a00757673dcac96cac2d7dde3d971de81a74415",
+    "03_Code\\04_Final_Evaluation\\evaluate_discovery_audit.py": "f1024bec39df7c46fbc0fee075e73ca50e7db6c32c6c77708fc2e68e07c4059f",
+    "02_Data\\02_Prepared\\v2_timing.sqlite": "9cf3537f893d20c3140a36cac8473a647d9b234422620c25fae5783296a04423",
+    "02_Data\\03_Model_Outputs\\discovery_development.sqlite": "6f7a0c40283712c4c825182cd89d65a69319af257c751bfd67122869537d71dc",
+    "02_Data\\02_Prepared\\discovery_popularity.sqlite": "51086b283209c659684f970154b3d287778ceebd52862df376ba7f95b96790b9",
+    "05_Results\\03_Checks\\discovery_protocol.json": "e54fbcc560f5c8659c2a0ca1dec70c5a3d02d34870d0aa71ffc57b6721aa103d",
+    "05_Results\\03_Checks\\discovery_development.json": "7e894fba8d5b616b4e73dc6eecece79befe10d87953af387957a69862d2d3950"
+  }
+}

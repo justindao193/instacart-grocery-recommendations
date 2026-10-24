@@ -1,0 +1,14 @@
+{
+  "status": "prepared_not_scored",
+  "customers": 60000,
+  "eligible_history_orders": 876349,
+  "history_product_lines": 8838134,
+  "ranked_products": 47352,
+  "source": "02_Data\\02_Prepared\\v2_timing.sqlite",
+  "output": "02_Data\\02_Prepared\\discovery_popularity.sqlite",
+  "target_answers_read": false,
+  "audit_used": false,
+  "prototype_changed": false,
+  "ranking": "Earlier development order count descending, product ID ascending",
+  "next_step": "Exclude each shopper's earlier products, then select up to three; implement related-product challenger before matched scoring."
+}

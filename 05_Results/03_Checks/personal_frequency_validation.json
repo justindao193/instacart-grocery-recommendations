@@ -1,0 +1,88 @@
+{
+  "stage": "validation only; final train baskets untouched",
+  "customers_evaluated": 131209,
+  "ranking": "purchase-order count descending; latest purchase order descending; product_id ascending",
+  "candidates": "previously bought products only; no popularity filling; missing slots count against precision@5",
+  "customers_with_fewer_than_five_suggestions": 3521,
+  "comparison": {
+    "precision_at_5": {
+      "popularity": 0.0930744080055484,
+      "personal_frequency": 0.3512960239007995,
+      "difference_percentage_points": 25.822161589525113,
+      "paired_difference_approx_95pct_interval_pp": [
+        25.67664840574096,
+        25.967674773309263
+      ]
+    },
+    "recall_at_5": {
+      "popularity": 0.04713882035218339,
+      "personal_frequency": 0.23441078230011955,
+      "difference_percentage_points": 18.727196194793613,
+      "paired_difference_approx_95pct_interval_pp": [
+        18.588605166993894,
+        18.865787222593333
+      ]
+    },
+    "hit_at_5": {
+      "popularity": 0.358092813755154,
+      "personal_frequency": 0.7807162618417944,
+      "difference_percentage_points": 42.26234480866404,
+      "paired_difference_approx_95pct_interval_pp": [
+        41.95930216961334,
+        42.565387447714734
+      ]
+    }
+  },
+  "checks": {
+    "independent_ranking_and_overlap_users": 100,
+    "matching_cohort_and_baskets": true,
+    "all_candidate_latest_purchases_before_validation": true
+  },
+  "example_user_1": {
+    "suggestions": [
+      {
+        "user_id": 1,
+        "product_id": 196,
+        "purchase_orders": 9,
+        "last_purchase_order_number": 9,
+        "recommendation_rank": 1,
+        "product_name": "Soda"
+      },
+      {
+        "user_id": 1,
+        "product_id": 12427,
+        "purchase_orders": 9,
+        "last_purchase_order_number": 9,
+        "recommendation_rank": 2,
+        "product_name": "Original Beef Jerky"
+      },
+      {
+        "user_id": 1,
+        "product_id": 10258,
+        "purchase_orders": 8,
+        "last_purchase_order_number": 9,
+        "recommendation_rank": 3,
+        "product_name": "Pistachios"
+      },
+      {
+        "user_id": 1,
+        "product_id": 25133,
+        "purchase_orders": 7,
+        "last_purchase_order_number": 9,
+        "recommendation_rank": 4,
+        "product_name": "Organic String Cheese"
+      },
+      {
+        "user_id": 1,
+        "product_id": 46149,
+        "purchase_orders": 2,
+        "last_purchase_order_number": 9,
+        "recommendation_rank": 5,
+        "product_name": "Zero Calorie Cola"
+      }
+    ],
+    "actual_products": 9,
+    "matched_products": 5
+  },
+  "limits": "Same targets, different candidate strategies: popularity can suggest unfamiliar products; personal is rebuy-only. Recency is only a tie-break, not a weighted-recency model. Approximate paired intervals describe sample uncertainty under independent-user assumptions, not population representativeness or causal benefit."
+}

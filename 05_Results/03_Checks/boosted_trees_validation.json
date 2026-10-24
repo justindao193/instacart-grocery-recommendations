@@ -1,0 +1,130 @@
+{
+  "status": "passed",
+  "stage": "validation only",
+  "features": [
+    "purchase_orders",
+    "purchase_share",
+    "orders_since_last_purchase",
+    "recency_score",
+    "history_orders"
+  ],
+  "settings": {
+    "learning_rate": 0.1,
+    "max_iter": 100,
+    "max_leaf_nodes": 15,
+    "max_depth": 4,
+    "min_samples_leaf": 100,
+    "l2_regularization": 1.0,
+    "early_stopping": false,
+    "random_state": 0,
+    "class_weight": null
+  },
+  "scaling": "No scaling needed for these tree splits; raw prepared inputs",
+  "regularisation": "Small trees, minimum leaf size and L2",
+  "sampling": "all prepared training rows; no negative sampling",
+  "row_weighting": "equal customer-product row weights; customers have differing candidate counts",
+  "tie_break": "score descending, last purchase order descending, product_id ascending",
+  "parameter_search": false,
+  "final_baskets_scored": false,
+  "working_recall_gain_target_pp": 0.5,
+  "target_note": "Proposed experiment target before this result, not an industry rule or final business acceptance criterion.",
+  "early_stopping_note": "Fixed 100 rounds; no automatic random-row validation split and no external validation answers during fit.",
+  "sklearn_version": "1.9.1",
+  "training_rows": 7324671,
+  "validation_candidate_rows": 7912788,
+  "customers": 131209,
+  "short_lists": 3521,
+  "comparison": {
+    "precision_at_5": {
+      "boosted_trees": 0.37145622632593805,
+      "weighted_recency": 0.36906767066283563,
+      "difference_percentage_points": 0.23885556631023785,
+      "paired_approx_95pct_interval_pp": [
+        0.20426851551422734,
+        0.2734426171062484
+      ]
+    },
+    "recall_at_5": {
+      "boosted_trees": 0.24707124074655512,
+      "weighted_recency": 0.2454297550480928,
+      "difference_percentage_points": 0.16414856984622841,
+      "paired_approx_95pct_interval_pp": [
+        0.13623448467205732,
+        0.19206265502039951
+      ]
+    },
+    "hit_at_5": {
+      "boosted_trees": 0.7932916187151796,
+      "weighted_recency": 0.791614904465395,
+      "difference_percentage_points": 0.16767142497846946,
+      "paired_approx_95pct_interval_pp": [
+        0.10174683251581687,
+        0.23359601744112204
+      ]
+    }
+  },
+  "history_groups": [
+    {
+      "history_orders": "1-5",
+      "customers": 46929,
+      "boosted_trees_recall": 0.23051856842516374,
+      "recency_recall": 0.23022617107879026
+    },
+    {
+      "history_orders": "6-15",
+      "customers": 45262,
+      "boosted_trees_recall": 0.25299715279624546,
+      "recency_recall": 0.2507605398440931
+    },
+    {
+      "history_orders": "16+",
+      "customers": 39018,
+      "boosted_trees_recall": 0.26010578193722333,
+      "recency_recall": 0.25753204144562314
+    }
+  ],
+  "training_completed": true,
+  "iterations": 100,
+  "fit_seconds": 27.88387309999962,
+  "validation_scoring_seconds": 35.66351080000004,
+  "timing_note": "One local batch run including SQLite/chunk/ranking work; not app response latency.",
+  "checks": {
+    "training_inputs_only": true,
+    "fitted_model_unchanged_after_validation": true,
+    "independent_top5_users": 100,
+    "saved_model_predictions_match": true,
+    "same_cohort_and_baskets": true,
+    "baseline_saved_scores_match": true
+  },
+  "limits": "Exploratory validation; final targets untouched. One training target per known customer. Candidate rows weighted equally, not customers. No calibration or live benefit test.",
+  "comparison_with_logistic": {
+    "precision_at_5": {
+      "logistic_regression": 0.3688420763819556,
+      "boosted_trees": 0.37145622632593805,
+      "difference_percentage_points": 0.2614149943982501,
+      "paired_approx_95pct_interval_pp": [
+        0.22656532643443855,
+        0.29626466236206167
+      ]
+    },
+    "recall_at_5": {
+      "logistic_regression": 0.2454565103339232,
+      "boosted_trees": 0.24707124074655512,
+      "difference_percentage_points": 0.16147304126319081,
+      "paired_approx_95pct_interval_pp": [
+        0.13408736408393546,
+        0.18885871844244614
+      ]
+    },
+    "hit_at_5": {
+      "logistic_regression": 0.7913252901858866,
+      "boosted_trees": 0.7932916187151796,
+      "difference_percentage_points": 0.196632852929296,
+      "paired_approx_95pct_interval_pp": [
+        0.1321133702930624,
+        0.26115233556552964
+      ]
+    }
+  },
+  "meets_working_recall_gain_target": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "stage": "prediction only; final answers not read",
+  "selected_default": "weighted_recency",
+  "methods": [
+    "popularity",
+    "personal_frequency",
+    "weighted_recency",
+    "logistic_regression",
+    "boosted_trees"
+  ],
+  "model_refit": false,
+  "source_sha256": {
+    "02_Data\\02_Prepared\\evaluation_plan.csv": "ade3b1acc69ae80c512216d0ae70fae214bec8b9d06231639f5a37f1826fb5b4",
+    "02_Data\\01_Original\\orders.csv": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+    "02_Data\\01_Original\\order_products__prior.csv": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "model_sha256": {
+    "02_Data\\03_Model_Outputs\\logistic_model.json": "39a7dce4933277b2b985510b55b98d115f29bcca5e77475ed45035eec985fcd3",
+    "02_Data\\03_Model_Outputs\\boosted_trees_model.joblib": "4ad99cc7fe1600e15269024d24f8c05cdce2b4d9f8a7484ae0ae3d3b23e211b2"
+  },
+  "code_and_plan_sha256": {
+    "03_Code\\prepare_final_predictions.py": "d7a9547ffa5ba866581ef9366c5dda6d81ef8d8abaf00ffd58bb7cea750e77a4",
+    "03_Code\\08_Final_Features.sql": "6369336df3e41b2d0bcbaea2c6b35efe6d9349f9f64dcf93ed6a16cc788dd032",
+    "03_Code\\train_logistic_validation.py": "83306e5254428cdb40847bc9fdefae749a3fa839237e315e7b26d000733ecfe0",
+    "01_Project\\03_Data_And_Methods.md": "68e821e690ec88321301ee43482e579119a4ac262157715d462279d53a810536"
+  },
+  "final_answers_read": false,
+  "final_scores_generated": false,
+  "predictions_database": "02_Data\\03_Model_Outputs\\final_predictions.sqlite",
+  "predictions_sha256": "ee5e2199f1295dbaf9b4efbe302ed496a00e4af796cce8a156b9c8f8f194f68e",
+  "customers": 131209,
+  "feature_rows": 8474661,
+  "methods_summary": {
+    "popularity": {
+      "customers": 131209,
+      "suggestion_slots": 656045,
+      "short_lists": 0
+    },
+    "personal_frequency": {
+      "customers": 131209,
+      "suggestion_slots": 651660,
+      "short_lists": 2168
+    },
+    "weighted_recency": {
+      "customers": 131209,
+      "suggestion_slots": 651660,
+      "short_lists": 2168
+    },
+    "logistic_regression": {
+      "customers": 131209,
+      "suggestion_slots": 651660,
+      "short_lists": 2168
+    },
+    "boosted_trees": {
+      "customers": 131209,
+      "suggestion_slots": 651660,
+      "short_lists": 2168
+    }
+  },
+  "eligible_history_orders": 2047377,
+  "independent_raw_csv_customers_checked": 100,
+  "checks": {
+    "prior_cutoffs_and_target_metadata": true,
+    "same_cohort": true,
+    "unique_ranks_and_personal_candidates": true,
+    "short_lists_match_candidate_limits": true,
+    "independent_features_and_rankings": true,
+    "original_ML_models_unchanged": true
+  },
+  "preparation_seconds": 117.0,
+  "limits": "Predictions only. No final answers, scores, calibration or live-benefit measurements. Popularity may suggest unfamiliar products."
+}

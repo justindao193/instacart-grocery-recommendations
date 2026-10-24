@@ -1,0 +1,50 @@
+{
+  "status": "passed_technical_checks",
+  "customers": 15000,
+  "customers_with_novel_products": 12253,
+  "customers_without_novel_products": 2747,
+  "novel_target_product_lines": 63830,
+  "novel_target_lines_in_candidate_catalogue": 63728,
+  "overall": {
+    "unfamiliar_popularity": {
+      "hit_at_3": 0.06626666666666667,
+      "precision_at_3": 0.02351111111111111,
+      "recall_at_3_among_novel_baskets": 0.017859587829148985,
+      "distinct_suggested_products": 25,
+      "short_lists": 0
+    },
+    "related_products": {
+      "hit_at_3": 0.07726666666666666,
+      "precision_at_3": 0.027377777777777775,
+      "recall_at_3_among_novel_baskets": 0.021967254700067284,
+      "distinct_suggested_products": 1444,
+      "short_lists": 0
+    }
+  },
+  "related_minus_popularity_hit_pp": 1.0999999999999999,
+  "paired_approx_95pct_hit_interval_pp": [
+    0.6927789003755127,
+    1.507221099624487
+  ],
+  "precision_difference_pp": 0.3866666666666664,
+  "passes_fixed_audit_gate": true,
+  "gate": {
+    "hit_gain_pp_at_least": 0.5,
+    "paired_hit_lower_bound_above": 0,
+    "precision_gain_pp_at_least": 0,
+    "note": "Agent-selected exploratory project criterion, not a business standard. Passing only warrants review; no automatic audit or UI change."
+  },
+  "more_hit_customers": 569,
+  "fewer_hit_customers": 404,
+  "same_hit_customers": 14027,
+  "related_fallback_slots": 18,
+  "raw_csv_sample_customers_checked": 100,
+  "predictions_sha256": "38bd8596b60bba6d1869ea18564ae676faf948afb0a3591e43f758c54be578c2",
+  "protocol_sha256": "509277c44464b12a0cc4771cd3c5382a22675a3737341ab7dc99745982c15763",
+  "code_sha256": "f1024bec39df7c46fbc0fee075e73ca50e7db6c32c6c77708fc2e68e07c4059f",
+  "models_refit": false,
+  "prototype_changed": false,
+  "audit_now_exposed": true,
+  "limits": "Retrospective source already summarised; no common calendar, causality or customer-benefit proof. Interval assumes independent shoppers conditional on frozen fitted statistics.",
+  "next_step": "Review result; if passed, consider a separately authorised discovery prototype and usability test. No automatic UI change or tuning."
+}

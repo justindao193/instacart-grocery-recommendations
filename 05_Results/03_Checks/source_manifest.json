@@ -1,0 +1,58 @@
+{
+  "dataset": "The Instacart Online Grocery Shopping Dataset 2017",
+  "original_publisher": "Instacart",
+  "release_date": "2017-05-03",
+  "release_article": "https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2",
+  "dictionary": "https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b",
+  "terms": "https://gist.github.com/jeremystan/582eba13d6ee27ed465c43dc78934700",
+  "retrieval_date": "2026-10-20",
+  "retrieval_archive": "https://zenodo.org/records/2654444",
+  "archive_creator": "Xiaoyu Wang; archive uploaded 2019-04-30",
+  "retrieval_note": "Original release S3 URL returned HTTP 403. Files retrieved from a third-party Zenodo archive and matched its published MD5 checksums. Original-file equivalence cannot be independently certified against the unavailable publisher download.",
+  "sample_warning": "Instacart describes this as a heavily biased subset, not representative of its users/products/purchasing behaviour.",
+  "use_note": "Local non-commercial learning project. Do not redistribute raw data or a report containing recoverable row-level data. Retain original attribution and review original terms before public release.",
+  "files": {
+    "aisles.csv": {
+      "url": "https://zenodo.org/records/2654444/files/aisles.csv?download=1",
+      "bytes": 2603,
+      "md5": "bc49e521faa60e1542d4a94cac3e3bb0",
+      "sha256": "2c5f4677761907d3a3ca01edd2d2abe67c147cc60e4905e68736d5f9f3046067",
+      "archive_md5_match": true
+    },
+    "departments.csv": {
+      "url": "https://zenodo.org/records/2654444/files/departments.csv?download=1",
+      "bytes": 270,
+      "md5": "18d5219db49bd50b403d39016c3ecdc5",
+      "sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43",
+      "archive_md5_match": true
+    },
+    "orders.csv": {
+      "url": "https://zenodo.org/records/2654444/files/orders.csv?download=1",
+      "bytes": 108968645,
+      "md5": "dd0b2f4ee716409b8e79e7b1c611a0b8",
+      "sha256": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+      "archive_md5_match": true
+    },
+    "products.csv": {
+      "url": "https://zenodo.org/records/2654444/files/products.csv?download=1",
+      "bytes": 2166953,
+      "md5": "dfcfded9d4af77d8b747913a4cbe6ffc",
+      "sha256": "abc61fdd748003d280ae49cc5d71b65380805ab1ca55dba96fd9a49295ea78b9",
+      "archive_md5_match": true
+    },
+    "order_products__prior.csv": {
+      "url": "https://zenodo.org/records/2654444/files/order_products__prior.csv?download=1",
+      "bytes": 577550706,
+      "md5": "8bca7ad1968ee8e07760b94db74461fb",
+      "sha256": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359",
+      "archive_md5_match": true
+    },
+    "order_products__train.csv": {
+      "url": "https://zenodo.org/records/2654444/files/order_products__train.csv?download=1",
+      "bytes": 24680147,
+      "md5": "5d8f7580855097e3644ea626ee430b75",
+      "sha256": "d27c4034883051c85e37c2cb0379fecbbeccad932970e171461aa99f18f75aea",
+      "archive_md5_match": true
+    }
+  }
+}

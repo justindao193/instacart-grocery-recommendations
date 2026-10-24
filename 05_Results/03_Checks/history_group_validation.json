@@ -1,0 +1,69 @@
+{
+  "stage": "exploratory validation segmentation; no final baskets scored",
+  "grouping": "count of eligible prior orders before the validation basket; 1–5, 6–15, 16+",
+  "customers_evaluated": 131209,
+  "groups": [
+    {
+      "group": "Short: 1–5 orders",
+      "history_min": 1,
+      "history_max": 5,
+      "customers": 46929,
+      "mean_actual_basket_products": 9.803255982441561,
+      "customers_with_fewer_than_five_suggestions": 2987,
+      "mean_suggestions": 4.8671610304928725,
+      "recall_gain_percentage_points": 18.58694629696963,
+      "paired_recall_gain_approx_95pct_interval_pp": [
+        18.34243929532583,
+        18.83145329861343
+      ],
+      "popular_precision_at_5": 0.07995908713162438,
+      "popular_recall_at_5": 0.04412791321343552,
+      "popular_hit_at_5": 0.31839587461910546,
+      "personal_precision_at_5": 0.312288776662618,
+      "personal_recall_at_5": 0.2299973761831318,
+      "personal_hit_at_5": 0.7358989111210552
+    },
+    {
+      "group": "Medium: 6–15 orders",
+      "history_min": 6,
+      "history_max": 15,
+      "customers": 45262,
+      "mean_actual_basket_products": 10.371371128098625,
+      "customers_with_fewer_than_five_suggestions": 448,
+      "mean_suggestions": 4.9797180858114976,
+      "recall_gain_percentage_points": 19.81705625797815,
+      "paired_recall_gain_approx_95pct_interval_pp": [
+        19.579134401414848,
+        20.05497811454146
+      ],
+      "popular_precision_at_5": 0.09002253546020944,
+      "popular_recall_at_5": 0.04570408227857564,
+      "popular_hit_at_5": 0.3505368741991074,
+      "personal_precision_at_5": 0.36493305642702484,
+      "personal_recall_at_5": 0.24387464485835714,
+      "personal_hit_at_5": 0.7995669656665636
+    },
+    {
+      "group": "Long: 16+ orders",
+      "history_min": 16,
+      "history_max": null,
+      "customers": 39018,
+      "mean_actual_basket_products": 11.007791275821416,
+      "customers_with_fewer_than_five_suggestions": 86,
+      "mean_suggestions": 4.994976677430929,
+      "recall_gain_percentage_points": 17.631613163247238,
+      "paired_recall_gain_approx_95pct_interval_pp": [
+        17.398604275939057,
+        17.86462205055542
+      ],
+      "popular_precision_at_5": 0.11238915372392232,
+      "popular_recall_at_5": 0.05242453401772064,
+      "popular_hit_at_5": 0.41460351632579834,
+      "personal_precision_at_5": 0.38239274181147165,
+      "personal_recall_at_5": 0.22874066565019305,
+      "personal_hit_at_5": 0.8127530883182121
+    }
+  ],
+  "checks": "All cohort users assigned once; same target baskets; weighted groups recover overall scores.",
+  "limits": "Observed groups are not randomised. History length can coincide with different basket sizes and habits. No zero-history users are evaluated. Paired intervals assume independent users and do not establish representativeness."
+}

@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "customers": 75000,
+  "candidate_rows": 4509970,
+  "retained_history_product_lines": 11011698,
+  "groups": [
+    {
+      "split": "audit",
+      "customers": 15000,
+      "candidates": 891826,
+      "timing_available": 206710
+    },
+    {
+      "split": "development",
+      "customers": 60000,
+      "candidates": 3618144,
+      "timing_available": 840010
+    }
+  ],
+  "raw_sample_customers": 50,
+  "raw_sample_candidates_checked": 3575,
+  "invalid_rows": 0,
+  "target_product_ids_parsed_or_stored": false,
+  "source_sha256": {
+    "orders.csv": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+    "order_products__prior.csv": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "protocol_sha256": "21eb33b477016fec073d4857d3efcf36ea7ea7c792a4c336a0ed7e6289766896",
+  "code_sha256": "233f986e99bcf16dcdc73644498e2d73397d6fdac79235e46d18f8d7e4272bed",
+  "database_sha256": "9cf3537f893d20c3140a36cac8473a647d9b234422620c25fae5783296a04423",
+  "seconds": 160.56102459999966,
+  "model_fitted": false,
+  "audit_answers_scored": false,
+  "version_1_modified": false
+}

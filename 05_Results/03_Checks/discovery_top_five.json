@@ -1,0 +1,81 @@
+{
+  "status": "passed_technical_checks",
+  "interpretation": "Descriptive follow-up on exposed baskets, not independent validation. No new pass/fail gate.",
+  "display_count": 5,
+  "stages": {
+    "development": {
+      "customers": 60000,
+      "customers_with_novel_products": 49118,
+      "customers_without_novel_products": 10882,
+      "overall": {
+        "unfamiliar_popularity": {
+          "hit_at_5": 0.09243333333333334,
+          "precision_at_5": 0.020326666666666666,
+          "recall_at_5_among_novel_baskets": 0.025895815326274663,
+          "short_lists": 0,
+          "distinct_suggested_products": 32
+        },
+        "related_products": {
+          "hit_at_5": 0.10991666666666666,
+          "precision_at_5": 0.024746666666666667,
+          "recall_at_5_among_novel_baskets": 0.032683332578234366,
+          "short_lists": 0,
+          "distinct_suggested_products": 3363
+        }
+      },
+      "related_minus_popularity_hit_pp": 1.7483333333333333,
+      "paired_approx_95pct_hit_interval_pp": [
+        1.5319741036309251,
+        1.9646925630357415
+      ],
+      "more_hit_customers": 2727,
+      "fewer_hit_customers": 1678,
+      "same_hit_customers": 55595,
+      "related_fallback_slots": 225,
+      "novel_target_product_lines": 259492,
+      "novel_target_lines_in_catalogue": 259071
+    },
+    "audit": {
+      "customers": 15000,
+      "customers_with_novel_products": 12253,
+      "customers_without_novel_products": 2747,
+      "overall": {
+        "unfamiliar_popularity": {
+          "hit_at_5": 0.09313333333333333,
+          "precision_at_5": 0.020493333333333336,
+          "recall_at_5_among_novel_baskets": 0.02578811739427879,
+          "short_lists": 0,
+          "distinct_suggested_products": 33
+        },
+        "related_products": {
+          "hit_at_5": 0.10773333333333333,
+          "precision_at_5": 0.024306666666666667,
+          "recall_at_5_among_novel_baskets": 0.032084177434952496,
+          "short_lists": 0,
+          "distinct_suggested_products": 1944
+        }
+      },
+      "related_minus_popularity_hit_pp": 1.46,
+      "paired_approx_95pct_hit_interval_pp": [
+        1.0246864774821955,
+        1.8953135225178044
+      ],
+      "more_hit_customers": 666,
+      "fewer_hit_customers": 447,
+      "same_hit_customers": 13887,
+      "related_fallback_slots": 30,
+      "novel_target_product_lines": 63830,
+      "novel_target_lines_in_catalogue": 63728
+    }
+  },
+  "original_top_three_prefix_rows_verified": 450000,
+  "sample_saved_overlap_customers_per_split": 100,
+  "predictions_sha256": "1b0278fcf54c57f03ad5ef097a23e7b24a218b30b068e9077cd4a351d44c2aa4",
+  "plan_sha256": "53f54786666f3b6db591e77c9b394cd5a0130c05e7816d1613ef84359402efc6",
+  "code_sha256": "5c68b1e1ef865be083083673dce14bfa08cb404430aaecb4c6c7d355815d8b15",
+  "models_refit": false,
+  "parameters_tuned": false,
+  "original_reports_unchanged": true,
+  "interval_limits": "Independent shoppers conditional on frozen shared statistics; does not correct post-exposure analysis or prove customer benefit.",
+  "elapsed_seconds_not_app_latency": 27.793964199983748
+}

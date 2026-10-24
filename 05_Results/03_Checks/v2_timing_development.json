@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "stage": "development",
+  "customers": 60000,
+  "overall": {
+    "weighted_recency": {
+      "precision_at_5": 0.3730233333333333,
+      "recall_at_5": 0.24555852431663983,
+      "hit_at_5": 0.7956
+    },
+    "timing_bonus": {
+      "precision_at_5": 0.37374,
+      "recall_at_5": 0.24580704499150197,
+      "hit_at_5": 0.7955666666666666
+    }
+  },
+  "timing_minus_recency_pp": {
+    "precision_at_5": 0.07166666666666988,
+    "recall_at_5": 0.024852067486214047,
+    "hit_at_5": -0.0033333333333329662
+  },
+  "recall_paired_approx_95pct_interval_pp": [
+    -0.0027177347476569896,
+    0.05242186972008774
+  ],
+  "interval_assumption": "Independent customers; does not establish causal benefit or remove dataset bias",
+  "passes_prospective_gate": false,
+  "gate": {
+    "recall_gain_pp_at_least": 0.25,
+    "paired_recall_95pct_lower_bound_above": 0,
+    "precision_gain_pp_at_least": -0.1,
+    "hit_rate_gain_pp_at_least": -0.25,
+    "note": "Agent-chosen exploratory project criterion set before results, not an industry standard or agreed business target"
+  },
+  "history_groups": [
+    {
+      "history_orders": "1-5",
+      "customers": 21332,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.31591036939808737,
+          "recall_at_5": 0.23022052949982685,
+          "hit_at_5": 0.7383273954622164
+        },
+        "timing_bonus": {
+          "precision_at_5": 0.3159009938121133,
+          "recall_at_5": 0.23019546773586405,
+          "hit_at_5": 0.7382336396024751
+        }
+      }
+    },
+    {
+      "history_orders": "6-15",
+      "customers": 20902,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.3791503205434887,
+          "recall_at_5": 0.25012393105133135,
+          "hit_at_5": 0.8106879724428284
+        },
+        "timing_bonus": {
+          "precision_at_5": 0.379657449047938,
+          "recall_at_5": 0.2500796765683861,
+          "hit_at_5": 0.8099224954549804
+        }
+      }
+    },
+    {
+      "history_orders": "16+",
+      "customers": 17766,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.4343915343915344,
+          "recall_at_5": 0.25860389040150594,
+          "hit_at_5": 0.8466171338511764
+        },
+        "timing_bonus": {
+          "precision_at_5": 0.4362265000562873,
+          "recall_at_5": 0.2595253620463954,
+          "hit_at_5": 0.8475177304964538
+        }
+      }
+    }
+  ],
+  "more_matches": 2028,
+  "equal_matches": 56137,
+  "fewer_matches": 1835,
+  "changed_ranked_lists": 20731,
+  "short_lists_per_method": 1580,
+  "actual_product_lines": 626619,
+  "predictions_sha256": "961da0e952a71e8e77ac378e749786cab9aebd9c5ee1b6f4f746da4c7c079f58",
+  "protocol_sha256": "21eb33b477016fec073d4857d3efcf36ea7ea7c792a4c336a0ed7e6289766896",
+  "code_sha256": "233f986e99bcf16dcdc73644498e2d73397d6fdac79235e46d18f8d7e4272bed",
+  "sample_saved_matches_checked": 100,
+  "other_split_answers_parsed": false,
+  "version_1_modified": false,
+  "next_action": "Stop; keep V1 rule and leave audit unused"
+}

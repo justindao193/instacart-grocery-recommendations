@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "stage": "development_only",
+  "customers": 60000,
+  "data_exposure": "Development target answers previously scored for V2; exploratory reuse, not fresh validation.",
+  "history_source_sha256": "9cf3537f893d20c3140a36cac8473a647d9b234422620c25fae5783296a04423",
+  "code_sha256": "7ba6130d4df867fc207ba6c21a00757673dcac96cac2d7dde3d971de81a74415",
+  "baseline": "Development history order count, descending; product ID breaks ties. Exclude all personal history before top 3.",
+  "challenger": {
+    "binary_co_buyer_cosine": "shared shoppers / sqrt(shoppers buying source * shoppers buying candidate)",
+    "minimum_product_shoppers": 50,
+    "minimum_shared_shoppers": 5,
+    "neighbours_per_product": 40,
+    "personal_seed_products": 10,
+    "seed_rank_and_weight": "Existing five-order-half-life recency, descending; last purchase descending; product ID ascending.",
+    "score": "Sum(seed recency * cosine); round to 12 decimals; product ID breaks ties.",
+    "fallback": "Unfamiliar popularity fills remaining places after related candidates."
+  },
+  "metrics": {
+    "primary": "Hit@3 averaged over ALL 60000 customers",
+    "precision": "Matches / 3 for every customer, including short lists",
+    "conditional_novel_recall": "Matches / novel target products, averaged only over customers with at least one novel target product; report denominator",
+    "novel": "Absent from complete recorded pre-target personal history"
+  },
+  "gate": {
+    "hit_gain_pp_at_least": 0.5,
+    "paired_hit_lower_bound_above": 0,
+    "precision_gain_pp_at_least": 0,
+    "note": "Agent-selected exploratory project criterion, not a business standard. Passing only warrants review; no automatic audit or UI change."
+  },
+  "audit": "Not read or scored; any audit needs a separate fixed protocol.",
+  "limits": "Per-customer order cutoffs, no shared calendar. Shared histories have cross-customer timing ambiguity. Not causal discovery or satisfaction evidence.",
+  "popularity_sha256": "51086b283209c659684f970154b3d287778ceebd52862df376ba7f95b96790b9"
+}

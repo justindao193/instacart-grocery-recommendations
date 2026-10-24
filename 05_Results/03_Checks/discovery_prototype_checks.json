@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "display_count": 5,
+  "evaluation_count": 3,
+  "checks": [
+    "five unique unfamiliar cards per A/B",
+    "all discovery images embedded",
+    "fifth-card Add/remove events",
+    "C no duplicate row",
+    "original study modes suppress discovery"
+  ],
+  "method": "Node VM/stub DOM, not browser visual review",
+  "shared_AB_items": 3,
+  "popularity_fill_slots": 0,
+  "frozen_audit_code_protocol_unchanged": true
+}

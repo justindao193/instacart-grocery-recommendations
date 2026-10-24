@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "engine": "Python sqlite3",
+  "sqlite_version": "3.50.4",
+  "database": "02_Data\\02_Prepared\\instacart_ml.sqlite",
+  "table": "ml_features",
+  "feature_columns": [
+    "purchase_orders",
+    "purchase_share",
+    "orders_since_last_purchase",
+    "recency_score",
+    "history_orders"
+  ],
+  "label_column": "bought_next",
+  "identifiers_and_audit_columns_are_not_model_inputs": true,
+  "model_fitted": false,
+  "final_baskets_loaded_or_scored": false,
+  "source_sha256": {
+    "02_Data\\02_Prepared\\evaluation_plan.csv": "ade3b1acc69ae80c512216d0ae70fae214bec8b9d06231639f5a37f1826fb5b4",
+    "02_Data\\01_Original\\orders.csv": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+    "02_Data\\01_Original\\order_products__prior.csv": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "stages": [
+    {
+      "stage": "training",
+      "rows": 7324671,
+      "customers": 131209,
+      "positive_rows": 756543
+    },
+    {
+      "stage": "validation",
+      "rows": 7912788,
+      "customers": 131209,
+      "positive_rows": 797115
+    }
+  ],
+  "independent_raw_csv_customers_checked": 10,
+  "saved_validation_result_comparison": {
+    "personal_frequency": {
+      "precision_at_5": 0.3512960239007995,
+      "recall_at_5": 0.23441078230011955,
+      "hit_at_5": 0.7807162618417944,
+      "customers": 131209
+    },
+    "weighted_recency": {
+      "precision_at_5": 0.36906767066283563,
+      "recall_at_5": 0.2454297550480928,
+      "hit_at_5": 0.791614904465395,
+      "customers": 131209
+    }
+  },
+  "preparation_seconds": 194.19,
+  "timing_note": "One preparation run, not a model response-time benchmark.",
+  "limits": "Rebuy candidates and known customers only; not customer-benefit evidence."
+}

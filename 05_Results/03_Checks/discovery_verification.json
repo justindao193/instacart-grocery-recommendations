@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "random_customers_independently_reranked": 100,
+  "methods_checked": 2,
+  "saved_recommendations": 360000,
+  "familiar_products_recommended": 0,
+  "audit_recommendations": 0,
+  "note": "Read-only verification; no refit or scoring rerun."
+}

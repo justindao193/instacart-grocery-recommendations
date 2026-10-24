@@ -1,0 +1,115 @@
+{
+  "status": "passed",
+  "stage": "validation diagnostics; no training or final baskets",
+  "customers": 131209,
+  "group_rule": "Fixed actual basket sizes:1-5,6-10,11-20,21+ products",
+  "groups": [
+    {
+      "actual_basket_size": "1-5 products",
+      "customers": 40010,
+      "mean_basket_products": 3.1093226693326668,
+      "mean_five_slot_recall_ceiling": 1.0,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.21932516870782306,
+          "recall_at_5": 0.3897700574856286,
+          "hit_at_5": 0.6595351162209447
+        },
+        "logistic_regression": {
+          "precision_at_5": 0.2195151212196951,
+          "recall_at_5": 0.39016704157294013,
+          "hit_at_5": 0.6595351162209447
+        },
+        "boosted_trees": {
+          "precision_at_5": 0.2209847538115471,
+          "recall_at_5": 0.3922723485795218,
+          "hit_at_5": 0.661859535116221
+        }
+      },
+      "tree_minus_recency_recall_pp": 0.25022910938931936
+    },
+    {
+      "actual_basket_size": "6-10 products",
+      "customers": 39628,
+      "mean_basket_products": 7.866230947814676,
+      "mean_five_slot_recall_ceiling": 0.6564614906727807,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.34508933077621884,
+          "recall_at_5": 0.2231158704523497,
+          "hit_at_5": 0.7830321994549309
+        },
+        "logistic_regression": {
+          "precision_at_5": 0.344912687998385,
+          "recall_at_5": 0.22305298402123877,
+          "hit_at_5": 0.7825022711214293
+        },
+        "boosted_trees": {
+          "precision_at_5": 0.3477389724437267,
+          "recall_at_5": 0.22487046196292182,
+          "hit_at_5": 0.7850005046936509
+        }
+      },
+      "tree_minus_recency_recall_pp": 0.17545915105721305
+    },
+    {
+      "actual_basket_size": "11-20 products",
+      "customers": 37937,
+      "mean_basket_products": 14.548541002187838,
+      "mean_five_slot_recall_ceiling": 0.3559003206098794,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.46619922503097244,
+          "recall_at_5": 0.1632294974158391,
+          "hit_at_5": 0.8826475472493871
+        },
+        "logistic_regression": {
+          "precision_at_5": 0.46551915017001877,
+          "recall_at_5": 0.163002268854897,
+          "hit_at_5": 0.8822785143791022
+        },
+        "boosted_trees": {
+          "precision_at_5": 0.46914621609510504,
+          "recall_at_5": 0.16427585115206156,
+          "hit_at_5": 0.8839918812768537
+        }
+      },
+      "tree_minus_recency_recall_pp": 0.10463537362224537
+    },
+    {
+      "actual_basket_size": "21+ products",
+      "customers": 13634,
+      "mean_basket_products": 27.20646912131436,
+      "mean_five_slot_recall_ceiling": 0.1923201744584355,
+      "methods": {
+        "weighted_recency": {
+          "precision_at_5": 0.6079213730379932,
+          "recall_at_5": 0.11543344376960607,
+          "hit_at_5": 0.9508581487457826
+        },
+        "logistic_regression": {
+          "precision_at_5": 0.6075986504327416,
+          "recall_at_5": 0.1153410009335865,
+          "hit_at_5": 0.9506381106058384
+        },
+        "boosted_trees": {
+          "precision_at_5": 0.6101364236467655,
+          "recall_at_5": 0.11587605461534815,
+          "hit_at_5": 0.9507114566524865
+        }
+      },
+      "tree_minus_recency_recall_pp": 0.04426108457420815
+    }
+  ],
+  "denominators": {
+    "precision": "matches / five, calculated per customer then averaged",
+    "recall": "matches / all distinct actual basket products, calculated per customer then averaged",
+    "hit_rate": "customers with at least one match / customers in that group"
+  },
+  "checks": {
+    "same_users_targets_full_basket_sizes": true,
+    "each_user_in_one_group": true,
+    "all_saved_overall_metrics_reconcile": true
+  },
+  "limits": "Actual basket size is used after prediction for diagnosis, never as an input. Five slots structurally limit recall in larger baskets; lower recall alone does not establish worse ranking. The reported five-slot ceiling ignores familiar-product constraints and is not an achievable model promise. Exploratory groups, not causal effects or proof of customer benefit."
+}

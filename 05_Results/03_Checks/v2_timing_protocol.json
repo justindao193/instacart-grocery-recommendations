@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-23",
+  "status": "fixed_before_v2_product_answer_inspection",
+  "source_sha256": {
+    "orders.csv": "92a60ced67ac33bd82271f66ff9675374f69482d17a0e1442ba42caa8b3bff89",
+    "order_products__prior.csv": "27b59dc9cf0d485f55e64e0bc9c5d6fb077ae167f8dfeab9246a03b5b0186359"
+  },
+  "code_sha256": "233f986e99bcf16dcdc73644498e2d73397d6fdac79235e46d18f8d7e4272bed",
+  "split": {
+    "salt": "instacart-v2-timing-20261023",
+    "rule": "Sort SHA256(salt:user_id), user_id; first60000 development, remaining15000 audit",
+    "development": 60000,
+    "audit": 15000
+  },
+  "target": "Last known prior order; all inputs strictly earlier; official test finals not scored",
+  "baseline": "V1 weighted recency; sum 0.5**((cutoff-order_number)/5), rounded12 decimals",
+  "challenger": {
+    "rule": "baseline*(1+0.5*reliability*exp(-abs(next_gap_ratio-1)))",
+    "typical_gap": "Median adjacent purchase-order gaps; at least3 earlier purchases",
+    "gap_variability": "Median absolute deviation of gaps from typical_gap",
+    "reliability": "min(gap_count/4,1)/(1+gap_MAD/typical_gap)",
+    "next_gap_ratio": "(history_cutoff+1-last_purchase_order)/typical_gap",
+    "missing_timing": "No bonus; baseline unchanged",
+    "settings_search": false
+  },
+  "ranking": "Score rounded12 decimals descending; last purchase descending; product ID ascending; up to5 familiar products",
+  "metrics": {
+    "primary": "Mean per-customer Recall@5, full actual distinct basket denominator",
+    "precision": "Matches/5 including unfilled slots",
+    "hit_rate": "Customers with at least1 match/all customers"
+  },
+  "prospective_gate": {
+    "recall_gain_pp_at_least": 0.25,
+    "paired_recall_95pct_lower_bound_above": 0,
+    "precision_gain_pp_at_least": -0.1,
+    "hit_rate_gain_pp_at_least": -0.25,
+    "note": "Agent-chosen exploratory project criterion set before results, not an industry standard or agreed business target"
+  },
+  "audit_policy": "Only run audit if all development gates pass; freeze audit predictions before reading target product IDs; no retuning afterward",
+  "limitations": [
+    "Previously loaded/summarised dataset, not guaranteed pristine unseen data.",
+    "Different cohort/target point; do not compare to V1 aggregate scores.",
+    "Order positions do not measure consumption, quantities or exact elapsed days."
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "status": "passed",
+  "customers_per_history_group": 30,
+  "repetitions": 20,
+  "warmups": 3,
+  "seed": 20261022,
+  "thread_limit": 2,
+  "sampling": "30 customers per fixed history group, lowest SHA256(seed:user_id), independent of outcomes",
+  "timing_scope": "Prepared feature fetch/format, scoring+ranking, cached-list fetch: separate warm local stages",
+  "excluded": "Raw-history feature generation, model loading/training, cold-start, browser, network and app rendering",
+  "final_baskets_scored": false,
+  "methods": [
+    "weighted_recency",
+    "logistic_regression",
+    "boosted_trees"
+  ],
+  "logistic_note": "Restored saved original weights/scaler with the original library version; timed library scaling+prediction+ranking, no refit.",
+  "customers": 90,
+  "model_refitted": false,
+  "feature_fetch_and_format": {
+    "observations": 1800,
+    "median_ms": 0.13885,
+    "p95_ms": 0.2593499999999999
+  },
+  "scoring_and_ranking": {
+    "weighted_recency": {
+      "observations": 1800,
+      "median_ms": 0.005350000000000001,
+      "p95_ms": 0.0108
+    },
+    "logistic_regression": {
+      "observations": 1800,
+      "median_ms": 0.2044,
+      "p95_ms": 0.28751499999999997
+    },
+    "boosted_trees": {
+      "observations": 1800,
+      "median_ms": 0.5409,
+      "p95_ms": 0.756415
+    }
+  },
+  "cached_list_retrieval": {
+    "weighted_recency": {
+      "observations": 1800,
+      "median_ms": 0.041,
+      "p95_ms": 0.054414999999999984
+    },
+    "logistic_regression": {
+      "observations": 1800,
+      "median_ms": 0.0411,
+      "p95_ms": 0.05450999999999999
+    },
+    "boosted_trees": {
+      "observations": 1800,
+      "median_ms": 0.0411,
+      "p95_ms": 0.0555
+    }
+  },
+  "history_groups": {
+    "Short: 1-5 orders": {
+      "customers": 30,
+      "candidate_count_min": 1,
+      "candidate_count_median": 19.5,
+      "candidate_count_max": 54,
+      "scoring_and_ranking": {
+        "weighted_recency": {
+          "observations": 600,
+          "median_ms": 0.0042,
+          "p95_ms": 0.0081
+        },
+        "logistic_regression": {
+          "observations": 600,
+          "median_ms": 0.2018,
+          "p95_ms": 0.28814
+        },
+        "boosted_trees": {
+          "observations": 600,
+          "median_ms": 0.51665,
+          "p95_ms": 0.72712
+        }
+      }
+    },
+    "Medium: 6-15 orders": {
+      "customers": 30,
+      "candidate_count_min": 4,
+      "candidate_count_median": 37.5,
+      "candidate_count_max": 118,
+      "scoring_and_ranking": {
+        "weighted_recency": {
+          "observations": 600,
+          "median_ms": 0.005,
+          "p95_ms": 0.0087
+        },
+        "logistic_regression": {
+          "observations": 600,
+          "median_ms": 0.2038,
+          "p95_ms": 0.28302999999999995
+        },
+        "boosted_trees": {
+          "observations": 600,
+          "median_ms": 0.53555,
+          "p95_ms": 0.7014299999999994
+        }
+      }
+    },
+    "Long: 16+ orders": {
+      "customers": 30,
+      "candidate_count_min": 14,
+      "candidate_count_median": 68.0,
+      "candidate_count_max": 255,
+      "scoring_and_ranking": {
+        "weighted_recency": {
+          "observations": 600,
+          "median_ms": 0.007,
+          "p95_ms": 0.0126
+        },
+        "logistic_regression": {
+          "observations": 600,
+          "median_ms": 0.20845,
+          "p95_ms": 0.2877899999999997
+        },
+        "boosted_trees": {
+          "observations": 600,
+          "median_ms": 0.5836,
+          "p95_ms": 0.7810549999999995
+        }
+      }
+    }
+  },
+  "environment": {
+    "python": "3.13.15",
+    "sqlite": "3.50.4",
+    "scikit_learn": "1.9.1",
+    "platform": "Windows"
+  },
+  "checks": {
+    "same_candidates_and_ties": true,
+    "predictions_stable_across_repeats": true,
+    "sampled_tree_lists_match_saved_results": true,
+    "cached_lists_match_inference": true,
+    "restored_logistic_matches_saved_equation": true,
+    "sampled_logistic_lists_match_saved_results": true,
+    "randomised_calculation_order": true,
+    "all_ninety_users_assigned_once": true
+  },
+  "limits": "Warm local microbenchmark with 30 customers per history group, not population-weighted or concurrent load testing. Cached retrieval uses a small temporary SQLite database, not a production-size cache. Repeated calls are not independent user samples. Results exclude feature construction, network and rendering; not end-to-end app latency."
+}

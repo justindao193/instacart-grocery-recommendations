@@ -1,0 +1,30 @@
+# Local environment and caches
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Data stays local: raw Instacart CSVs, prepared databases and model outputs
+02_Data/**
+!02_Data/
+!02_Data/*/
+!02_Data/*/README.md
+*.csv
+*.parquet
+*.sqlite
+*.duckdb
+*.duckdb.wal
+*.joblib
+*.part
+*.pbix
+
+# Credentials and private files
+.env
+*.key
+*.pem
+
+# Not part of the public project
+99_Archive/
+09_Product_Management/
+03_Code/00_Run/claude_handoff.md

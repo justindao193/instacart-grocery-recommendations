@@ -1,0 +1,37 @@
+{
+  "status": "structural checks passed; full database execution blocked by Windows Application Control",
+  "working_folders": [
+    "01_Project",
+    "02_Data",
+    "03_Code",
+    "04_Learning",
+    "05_Results"
+  ],
+  "canonical_note_pages": 8,
+  "html_links_checked": 43,
+  "notebooks": [
+    {
+      "name": "01_Data_And_SQL.ipynb",
+      "cells_preserved": 18,
+      "saved_result_cells_executed": 5
+    },
+    {
+      "name": "02_Recommendation_Methods.ipynb",
+      "cells_preserved": 27,
+      "saved_result_cells_executed": 8
+    },
+    {
+      "name": "03_Model_Diagnostics.ipynb",
+      "cells_preserved": 17,
+      "saved_result_cells_executed": 5
+    }
+  ],
+  "browser_scripts_syntax_checked": 2,
+  "task_ids_and_existing_save_import_logic_preserved": true,
+  "model_script_logic_unchanged_except_paths": true,
+  "raw_data_and_environment_not_moved": true,
+  "source_and_prepared_manifests_unchanged": true,
+  "full_notebook_execution": "blocked importing _duckdb: An Application Control policy has blocked this file.",
+  "security_settings_changed": false,
+  "model_retraining_or_final_evaluation_run": false
+}

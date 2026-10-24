@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "source_counts": {
+    "orders": 3421083,
+    "products": 49688,
+    "aisles": 134,
+    "departments": 21,
+    "order_products__prior": 32434489,
+    "order_products__train": 1384617
+  },
+  "users": 206209,
+  "order_splits": {
+    "prior": 3214874,
+    "test": 75000,
+    "train": 131209
+  },
+  "structural_checks": {
+    "orders_duplicate_keys": 0,
+    "orders_missing_keys": 0,
+    "products_duplicate_keys": 0,
+    "products_missing_keys": 0,
+    "aisles_duplicate_keys": 0,
+    "aisles_missing_keys": 0,
+    "departments_duplicate_keys": 0,
+    "departments_missing_keys": 0,
+    "prior_duplicate_order_product_pairs": 0,
+    "prior_invalid_product_links": 0,
+    "prior_invalid_order_links": 0,
+    "prior_wrong_split_links": 0,
+    "prior_invalid_values": 0,
+    "prior_nonsequential_cart_positions": 0,
+    "train_duplicate_order_product_pairs": 0,
+    "train_invalid_product_links": 0,
+    "train_invalid_order_links": 0,
+    "train_wrong_split_links": 0,
+    "train_invalid_values": 0,
+    "train_nonsequential_cart_positions": 0,
+    "orders_duplicate_user_sequence": 0,
+    "orders_invalid_time_codes": 0,
+    "first_order_with_gap": 0,
+    "later_order_missing_gap": 0,
+    "products_missing_category_links": 0,
+    "users_with_nonconsecutive_order_numbers": 0,
+    "unexpected_eval_sets": 0
+  },
+  "notes": {
+    "missing_product_names": 0,
+    "products_in_missing_aisle_label": 1258,
+    "products_in_missing_department_label": 1258,
+    "first_orders_with_expected_blank_gap": 206209,
+    "gaps_recorded_as_30_or_more": 369323,
+    "note": "30 is a capped value, not necessarily exactly 30 days. Weekday codes remain 0-6; no calendar dates or weekday-name mapping assumed."
+  },
+  "known_product_lines": 33819106,
+  "evaluation_users": 131209,
+  "decisions": [
+    "Source CSVs unchanged; no rows dropped or imputed.",
+    "Prior orders are the history for descriptive metrics. Train final baskets are held back for later evaluation.",
+    "Test order contents are unavailable and remain null, not zero or assumed empty.",
+    "Validation uses each train user's last prior order; features must use earlier orders only.",
+    "Global product/department history summaries use all prior orders; do not use them as validation features because they include validation targets.",
+    "No recommendation algorithm, evaluation results or business findings generated in preparation."
+  ]
+}

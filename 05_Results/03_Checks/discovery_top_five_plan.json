@@ -1,0 +1,24 @@
+{
+  "purpose": "User-requested descriptive measurement of five suggestions to match current UI.",
+  "exposure": "Both development and former audit answers already inspected. NOT a fresh final test.",
+  "count": 5,
+  "ranking": "Exact frozen development neighbours, popularity, seed weights, rounding, ties and fallback; only cutoff increases from 3 to 5.",
+  "metrics": {
+    "hit": "At least one match / all shoppers per split",
+    "precision": "Matches / 5 averaged over all shoppers",
+    "novel_recall": "Matches / novel target product count, averaged only over nonempty novel baskets; report denominator"
+  },
+  "no_new_gate": true,
+  "no_tuning_or_refit": true,
+  "original_evidence_sha256": {
+    "02_Data\\03_Model_Outputs\\discovery_development.sqlite": "6f7a0c40283712c4c825182cd89d65a69319af257c751bfd67122869537d71dc",
+    "02_Data\\03_Model_Outputs\\discovery_audit.sqlite": "38bd8596b60bba6d1869ea18564ae676faf948afb0a3591e43f758c54be578c2",
+    "02_Data\\02_Prepared\\v2_timing.sqlite": "9cf3537f893d20c3140a36cac8473a647d9b234422620c25fae5783296a04423",
+    "02_Data\\02_Prepared\\discovery_popularity.sqlite": "51086b283209c659684f970154b3d287778ceebd52862df376ba7f95b96790b9",
+    "05_Results\\03_Checks\\discovery_development.json": "7e894fba8d5b616b4e73dc6eecece79befe10d87953af387957a69862d2d3950",
+    "05_Results\\03_Checks\\discovery_audit.json": "0c44fd3518bbc375ed68d86fc81990a08c503e9fc1605b9d1abde2a2cc347e70",
+    "03_Code\\03_Model_Comparison\\evaluate_discovery.py": "7ba6130d4df867fc207ba6c21a00757673dcac96cac2d7dde3d971de81a74415",
+    "03_Code\\04_Final_Evaluation\\evaluate_discovery_audit.py": "f1024bec39df7c46fbc0fee075e73ca50e7db6c32c6c77708fc2e68e07c4059f"
+  },
+  "code_sha256": "5c68b1e1ef865be083083673dce14bfa08cb404430aaecb4c6c7d355815d8b15"
+}

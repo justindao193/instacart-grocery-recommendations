@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "examples": {
+    "A": {
+      "source_user_id": 1,
+      "history_orders": 10,
+      "candidate_count": 18,
+      "saved_top_five_match": true
+    },
+    "B": {
+      "source_user_id": 113,
+      "history_orders": 5,
+      "candidate_count": 1,
+      "saved_top_five_match": true
+    }
+  },
+  "C": "simulated_no_history",
+  "final_answers_read": false,
+  "models_refitted": false,
+  "frozen_predictions_modified": false,
+  "all_candidates_exported": true,
+  "latest_order_gap": 0,
+  "approved_styles_unchanged": true,
+  "existing_photos_unchanged": true,
+  "style_sha256": "9e53e6827363e4ef8372f11028939c204ebf73743942104f2e3c6d3fd61e2856",
+  "display_groups": "Existing broad demo categories retained; not exact source aisles.",
+  "note": "Local prototype examples, not representative users or usability evidence."
+}

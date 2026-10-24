@@ -17,3 +17,7 @@ The task board tracked IDs, priority, dependencies, completion criteria and note
 I learned to distinguish customers from orders/product lines; prevent later answers entering recommendation inputs; compare ranking methods on matching baskets; distinguish precision, recall and hit rate; and inspect how personal recency and shared-buyer similarity contribute to suggestions. Explanations and worked examples were assisted by Codex. Claude helped design the prototype and portfolio. My role included scope decisions, comparison review, trade-offs, design feedback and facilitating exploratory sessions. I don't claim independent authorship of every code block.
 
 A useful product lesson was that a more accurate model needn't be the best first implementation, and a faster second prototype task doesn't prove a feature caused the improvement. Future price/stock/personal-preference information would need new data, not assumptions from missing purchases.
+
+## Making the repository reviewable
+
+After the analysis, I added a small runnable reference of the selected rules, an invented example, behaviour checks and a code walkthrough with AI implementation help. This separates understanding the method from rebuilding the private analysis environment. Historical scripts and reports stay unchanged. A Windows/Linux check workflow is configured; a hosted pass is not claimed before publication.

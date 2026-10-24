@@ -1,5 +1,7 @@
 # Repository review — 24 October 2026
 
+**Follow-up:** a runnable standard-library reference, tests, code walkthrough and [reproduction map](reproduction.md) now improve the reviewer entry point. They do not migrate the historical full-data pipeline. This follow-up is local until published.
+
 Reviewed public commit `5c4ee115ec8afe4dac59c34df3adc410318d48a2` of https://github.com/justindao193/instacart-grocery-recommendations . This report and accompanying changes are local candidates; nothing has been pushed from this session.
 
 ## Assessment

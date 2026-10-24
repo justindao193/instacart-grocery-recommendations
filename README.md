@@ -1,8 +1,10 @@
-# Grocery recommendations from public Instacart orders
+# Instacart grocery recommendations
 
 An independent learning project by Justin Dao. Not commissioned by, affiliated with or endorsed by Instacart.
 
 ![Prototype with a Buy it again row and a You might also like row](docs/images/prototype.jpg)
+
+**Role:** Product manager & data analyst. I defined the scope, reviewed the evidence, made the trade-offs and facilitated two early prototype sessions.
 
 **Question:** can a shopper's past orders help them find what they buy again, and suggest something new, better than a list of popular products?
 
@@ -18,50 +20,70 @@ The pass or fail check for Version 3 used three suggestions. The prototype shows
 
 All scores are offline checks on past baskets. They do not show time saved, sales or retention.
 
+## Review this project
+
+- **Product story:** [case study](docs/case_study.md), [decisions](docs/decision_log.md), [user testing](docs/research_and_testing.md).
+- **Working interface:** download and open [the shopping prototype](prototype/grocery_recommendations_prototype.html).
+- **Readable code:** [portable ranking rules](src/recommendations.py) and [code walkthrough](docs/code_walkthrough.md).
+- **Evidence:** [five-method comparison](results/final_evaluation.json) and [five-item discovery follow-up](results/discovery_top_five.json).
+- **Process:** [how I tracked tasks, decisions and learning](docs/process_and_learning.md).
+
+## Quick start
+
+The reference example needs **Python 3.13 and no third-party packages or dataset**. It uses invented histories, clearly labelled as examples. It doesn't reproduce the full-data experiment or power the HTML prototype, which uses precomputed lists.
+
+```bash
+git clone https://github.com/justindao193/instacart-grocery-recommendations.git
+cd instacart-grocery-recommendations
+python run.py demo
+python run.py results
+python -m unittest discover -s tests -v
+```
+
+On Windows, use `py -3.13` instead of `python` if needed. `demo` prints example suggestions; `results` reads saved aggregates without retraining. Neither changes the original results.
+
+The [shopping prototype](prototype/grocery_recommendations_prototype.html) runs in a browser without Python or an account. A/B use historical example profiles; C is a simulated shopper with no history.
+
+## How the rules work
+
+```text
+Past orders -> weighted purchase history -> up to five familiar products
+                       |
+              top ten familiar products
+                       |
+     shared-buyer connections -> exclude familiar products
+                       |
+              up to five discovery products
+```
+
+A purchase contributes `0.5 ** (orders_since_purchase / 5)`: five order positions older means half the points. Discovery adds `seed_weight * connection_strength` across familiar products. Connection strength is `shared_buyers / sqrt(buyers_A * buyers_B)`. These are ranking points, not probabilities.
+
+Hide filters familiar products before selecting five. A short familiar history stays short; a shopper without history gets popular products. Discovery excludes all recorded familiar products and uses unfamiliar popularity to fill remaining slots. See [the rule walkthrough](docs/code_walkthrough.md).
+
 ## Repository layout
 
-| Folder | What is inside |
+| Path | Purpose |
 |---|---|
-| `prototype/` | `grocery_recommendations_prototype.html`, the clickable shopping page. Open it in any browser. |
-| `src/data_preparation/` | Download the data, prepare it and check it |
-| `src/baselines/` | Popularity, personal frequency and weighted recency (Python + SQL) |
-| `src/model_comparison/` | Machine learning models, the Version 2 timing test and Version 3 discovery |
-| `src/final_evaluation/` | The one-time final check for Version 1 and the held-back check for Version 3 |
-| `src/prototype_export/` | Export saved example lists and photos into the prototype |
-| `results/` | Summary reports behind every number above |
-| `notebooks/` | Three walkthrough notebooks |
-| `docs/` | Case study, project brief, data and methods, research and testing, decision log |
+| `run.py`, `src/recommendations.py` | Runnable reference of the selected rules |
+| `tests/` | Behaviour checks, SQL fixture comparison and report checks |
+| `.github/workflows/checks.yml` | Windows/Linux checks configured for pushes and pull requests |
+| `prototype/` | Shopping page using saved recommendations |
+| `src/data_preparation/` | Historical download, preparation and quality checks |
+| `src/baselines/` | Historical popularity, frequency and weighted-recency Python/SQL |
+| `src/model_comparison/` | Historical ML comparison, timing and discovery experiments |
+| `src/final_evaluation/` | Historical prediction/scoring separation and discovery checks |
+| `src/prototype_export/` | Historical exports from private prepared files |
+| `results/` | Published aggregate evidence and protocols |
+| `notebooks/` | Original walkthroughs; most cells need the private analysis layout |
+| `docs/` | Case study, scope, methods, research, decisions, sources and code guide |
 
-## Key code
+## Original analysis and reproducibility
 
-- Weighted recency (recent purchases count more; the weight halves every five orders): [`src/baselines/score_weighted_recency.py`](src/baselines/score_weighted_recency.py), [`weighted_recency.sql`](src/baselines/weighted_recency.sql)
-- Discovery with shared buyers: [`src/model_comparison/evaluate_discovery.py`](src/model_comparison/evaluate_discovery.py)
-- Five-item descriptive follow-up: [`src/final_evaluation/measure_discovery_top_five.py`](src/final_evaluation/measure_discovery_top_five.py)
-- Held-back discovery check: [`src/final_evaluation/evaluate_discovery_audit.py`](src/final_evaluation/evaluate_discovery_audit.py)
+The stage folders preserve the analysis behind the results. They still depend on original local paths, preparation reports and intermediate databases; they are **not a clean-clone pipeline**. The reference makes the rules runnable without claiming to repeat millions of records or the trained models.
 
-## Running it
+Read [the dependency map and remaining gaps](docs/reproduction.md) for the full-data route. [requirements.txt](requirements.txt) records the original environment; installing it alone won't restore missing inputs. No raw orders, private databases or model files are committed.
 
-**Try the prototype:** download this repository, then open [Grocery Recommendations](prototype/grocery_recommendations_prototype.html) in a browser. No Python or account is required. A/B are historical example profiles; C is a simulated no-history profile.
-
-**Read the evidence:** the [case study](docs/case_study.md) and saved JSON files in `results/` are available without running analysis.
-
-**Analysis prerequisites:** the scripts and most notebook cells need the six Instacart CSVs (about 700 MB), which are not included. Get them from the [Zenodo archive](https://zenodo.org/records/2654444) of the 2017 [Instacart release](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) and check the dataset's terms before use.
-
-```
-py -3.13 -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-```
-
-### Analysis-code status
-
-This is a curated **historical code snapshot**, not a self-contained reproducible pipeline. Relocating files into `src/` left original path assumptions and hash dependencies intact. Some scripts need omitted preparation reports, evaluation metadata and private intermediate databases in addition to source CSVs. For example, the audit script currently imports from the original `03_Code/` path, so even its `--help` fails in this layout. Merely recreating the data folders is insufficient.
-
-The code is published for inspection and provenance. End-to-end reproduction needs an explicit path migration, a complete dependency/build-order map and a separate clean-environment check. Do not edit historical hashes or present a rerun on exposed answers as a new test. See [repository review](docs/repository_review.md) for the concrete gaps.
-
-Notes:
-- The scripts are kept exactly as they were run, so file paths inside them follow the original project layout (`02_Data/` for data, `05_Results/03_Checks/` for reports, `03_Code/<stage>/` for code). Recreate those folders, or update the paths, before rerunning.
-- Built and checked on one Windows machine with Python 3.13. A fresh setup on another computer has not been tested.
-- The final checks have already been opened, so rerunning them is not a fresh test.
+The unit checks passed locally on Windows. The Windows/Linux GitHub workflow is configured, but a hosted pass isn't claimed until it runs. No models or final evaluations were rerun for this repository update.
 
 ## Process and learning
 

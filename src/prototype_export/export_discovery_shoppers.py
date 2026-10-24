@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import defaultdict
 import csv, hashlib, json, re, sqlite3
 ROOT=Path(__file__).resolve().parents[2]
-PAGE=ROOT/'03_Code/05_Prototype/buy_again_prototype.html'
+PAGE=ROOT/'03_Code/05_Prototype/grocery_recommendations_prototype.html'
 DISPLAY_COUNT=5
 def ro(p):return sqlite3.connect((ROOT/p).as_uri()+'?mode=ro',uri=True)
 def main():

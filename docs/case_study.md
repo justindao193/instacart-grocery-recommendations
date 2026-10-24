@@ -1,10 +1,14 @@
-# Buy it again: evaluating a grocery recommendation feature
+# Grocery recommendations: repeat purchases and product discovery
 
-**Case study | Version 1 | Updated 23 October 2026**
+**Case study | Versions 1–3 | Updated 24 October 2026**
 
 Independent analysis and local prototype using Instacart's public 2017 order data. This project isn't commissioned by or affiliated with Instacart.
 
-## Executive summary
+## Project scope at a glance
+
+This case study follows three iterations: familiar-product recommendations, a timing experiment that was stopped, and unfamiliar-product discovery. The current prototype displays up to five suggestions in each section. The original discovery reserved check evaluated three; the later five-item measurement reused exposed baskets and is descriptive. The Version 1 executive summary below explains the initial decision; later sections record Versions 2–3.
+
+## Version 1 executive summary
 
 **Product question:** can a short Buy it again list help returning shoppers find familiar groceries with less searching?
 

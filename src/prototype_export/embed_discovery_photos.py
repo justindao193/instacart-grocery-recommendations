@@ -8,7 +8,7 @@ PHOTOS={
  '6184':('https://images.unsplash.com/photo-1543076659-9380cdf10613?w=320&h=320&fit=crop&fm=jpg&q=80','https://unsplash.com/photos/orange-fruits-qSkWlOBHia0','https://unsplash.com/license'),
  '41400':('https://images.pexels.com/photos/3026806/pexels-photo-3026806.jpeg?w=320','https://www.pexels.com/photo/top-view-photo-of-granola-bars-3026806/','https://www.pexels.com/license/')}
 def main():
- page=ROOT/'03_Code/05_Prototype/buy_again_prototype.html'
+ page=ROOT/'03_Code/05_Prototype/grocery_recommendations_prototype.html'
  old=page.read_text(encoding='utf-8');match=re.search(r'const PHOTOS = (\{.*?\});',old,re.S)
  photos=json.loads(match[1]);entries={}
  # Download and verify real photo bytes, then embed for offline use.

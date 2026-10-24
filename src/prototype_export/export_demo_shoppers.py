@@ -8,7 +8,7 @@ import sqlite3
 
 ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / '02_Data/03_Model_Outputs/final_predictions.sqlite'
-PAGE = ROOT / '03_Code/05_Prototype/buy_again_prototype.html'
+PAGE = ROOT / '03_Code/05_Prototype/grocery_recommendations_prototype.html'
 
 
 def main():

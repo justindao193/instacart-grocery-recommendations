@@ -115,8 +115,8 @@ This is a small usability pilot, not a live A/B experiment or a test of personal
 
 ### Set up two versions
 
-- [Search and browse only](../prototype/buy_again_prototype.html?study=search): the shortlist is absent; all products, search and basket remain available.
-- [With Buy it again](../prototype/buy_again_prototype.html?study=suggestions): the same catalogue and controls, with the shortlist visible.
+- [Search and browse only](../prototype/grocery_recommendations_prototype.html?study=search): the shortlist is absent; all products, search and basket remain available.
+- [With Buy it again](../prototype/grocery_recommendations_prototype.html?study=suggestions): the same catalogue and controls, with the shortlist visible.
 
 The usual prototype link is unchanged. Test links use separate Hide storage. Open both links yourself before the session, select Shopper A, restore any hidden items through Hidden items → Show again, and reload so the basket and search are empty. Don't hide anything during timed tasks. Reload the relevant link before every task; keep the same device, window size and connection. Use a private browsing session for each participant if practical, so their test state is separate. Don't erase normal browser storage.
 
